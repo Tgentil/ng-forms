@@ -1,1 +1,34 @@
-<p>array-form-component works!</p>
+<form [formGroup]="myForm">
+  <h1>Dynamic form</h1>
+
+  <div class="form-preview">Value: {{ myForm.value | json }}</div>
+
+  <hr />
+
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Email" formControlName="email" />
+  </mat-form-field>
+
+  <div formArrayName="phones">
+    <div *ngFor="let phone of phoneForms.controls; let i=index" [formGroupName]="i" class="phone-group">
+
+      <mat-form-field class="phone-field">
+        <input matInput placeholder="Area" formControlName="area">
+      </mat-form-field>
+
+      <mat-form-field class="phone-field">
+        <input matInput placeholder="Prefix" formControlName="prefix">
+      </mat-form-field>
+
+      <mat-form-field class="phone-field">
+        <input matInput placeholder="Line" formControlName="line">
+      </mat-form-field>
+
+      <button mat-raised-button color="warn" class="delete-button" (click)="deletePhone(i)">Delete</button>
+    </div>
+  </div>
+
+  <button mat-raised-button color="primary" (click)="addPhone()">Add Phone Number</button>
+
+  <button mat-raised-button color="primary" type="submit" class="submit-button">Submit</button>
+</form>
