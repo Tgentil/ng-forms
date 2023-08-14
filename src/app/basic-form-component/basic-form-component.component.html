@@ -1,1 +1,23 @@
-<p>basic-form-component works!</p>
+<form [formGroup]="myForm">
+
+  <div class="form-preview">
+    Value: {{ myForm.value | json }}
+  </div>
+
+  <hr>
+
+  <mat-form-field class="form-field">
+    <input matInput placeholder="Email" formControlName="email">
+  </mat-form-field>
+
+  <mat-form-field class="form-field">
+    <textarea matInput placeholder="Your message..." formControlName="message"></textarea>
+  </mat-form-field>
+
+  <mat-form-field class="form-field">
+    <input matInput placeholder="Career" formControlName="career">
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">Submit</button>
+
+</form>

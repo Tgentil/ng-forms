@@ -1,0 +1,28 @@
+.form-preview {
+  margin-bottom: 20px;
+  background-color
+: #f5f5f5;
+padding: 10px;
+border-radius: 5px;
+font-family: monospace;
+}
+
+mat-form-field.form-field {
+width: 100%;
+margin-bottom: 20px;
+
+&.mat-focused .mat-form-field-label {
+color: #3f51b5;
+}
+}
+
+button {
+float: right;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 0 auto;
+}
