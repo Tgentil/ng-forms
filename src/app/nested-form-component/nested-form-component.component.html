@@ -1,1 +1,47 @@
-<p>nested-form-component works!</p>
+<form [formGroup]="myForm">
+  <h1>Nested form</h1>
+
+  <div class="form-preview">Value: {{ myForm.value | json }}</div>
+
+  <hr />
+
+  <h4>Email</h4>
+
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Email" formControlName="email" />
+  </mat-form-field>
+
+  <h4>Cell Phone</h4>
+
+  <div formGroupName="cellPhone" class="phone-group">
+    <mat-form-field class="phone-field">
+      <input matInput placeholder="Area" formControlName="area">
+    </mat-form-field>
+
+    <mat-form-field class="phone-field">
+      <input matInput placeholder="Prefix" formControlName="prefix">
+    </mat-form-field>
+
+    <mat-form-field class="phone-field">
+      <input matInput placeholder="Line" formControlName="line">
+    </mat-form-field>
+  </div>
+
+  <h4>Home Phone</h4>
+
+  <div formGroupName="homePhone" class="phone-group">
+    <mat-form-field class="phone-field">
+      <input matInput placeholder="Area" formControlName="area">
+    </mat-form-field>
+
+    <mat-form-field class="phone-field">
+      <input matInput placeholder="Prefix" formControlName="prefix">
+    </mat-form-field>
+
+    <mat-form-field class="phone-field">
+      <input matInput placeholder="Line" formControlName="line">
+    </mat-form-field>
+  </div>
+
+  <button mat-raised-button color="primary" type="submit">Submit</button>
+</form>

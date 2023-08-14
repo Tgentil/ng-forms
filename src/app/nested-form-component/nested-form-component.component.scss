@@ -1,0 +1,47 @@
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.form-preview {
+  margin-bottom: 20px;
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-radius: 5px;
+  font-family: monospace;
+}
+
+mat-form-field.full-width {
+  width: 98%;
+  margin-bottom: 20px;
+  margin-left: 10px;
+
+  &.mat-focused .mat-form-field-label {
+    color: #3f51b5;
+  }
+}
+
+.phone-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+
+  .phone-field {
+    width: 30%;
+
+    &.mat-focused .mat-form-field-label {
+      color: #3f51b5;
+    }
+  }
+}
+
+button {
+  display: block;
+  margin: 20px auto 0;
+}
+
+h4 {
+  margin-left: 10px;
+}
