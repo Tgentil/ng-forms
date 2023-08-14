@@ -1,1 +1,50 @@
-<p>valid-form-component works!</p>
+<form [formGroup]="myForm">
+  <h1>Validation form </h1>
+
+  <div class="form-preview">
+    Value: {{ myForm.value | json }}
+  </div>
+
+  <hr>
+
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Email" formControlName="email">
+    <mat-error *ngIf="email?.hasError('required') && email?.touched">
+      Email is required.
+    </mat-error>
+    <mat-error *ngIf="email?.hasError('email') && email?.touched">
+      Please enter a valid email.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <input matInput type="password" placeholder="Password" formControlName="password">
+    <mat-hint>Password should contain both letters and numbers.</mat-hint>
+    <mat-error *ngIf="password?.hasError('required') && password?.touched">
+      Password is required.
+    </mat-error>
+    <mat-error *ngIf="password?.hasError('pattern') && password?.touched">
+      Password must contain both letters and numbers.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <input matInput type="number" placeholder="Age" formControlName="age">
+    <mat-error *ngIf="age?.hasError('required') && age?.touched">
+      Age is required.
+    </mat-error>
+    <mat-error *ngIf="age?.hasError('min') && age?.touched">
+      You are to young to use this app.
+    </mat-error>
+    <mat-error *ngIf="age?.hasError('max') && age?.touched">
+      you are to old to use this app.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-checkbox formControlName="agree" class="terms-checkbox">I agree to the terms and conditions</mat-checkbox>
+  <mat-error *ngIf="myForm.get('agree')?.hasError('requiredTrue') && myForm.get('agree')?.touched">
+    You must agree to continue.
+  </mat-error>
+
+  <button mat-raised-button color="primary" type="submit">Submit</button>
+</form>
