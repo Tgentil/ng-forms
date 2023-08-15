@@ -11,6 +11,16 @@ h1 {
   font-family: monospace;
 }
 
+.form-preview-dark {
+  background-color: #1d1a1a;
+  padding: 10px;
+  border-radius: 5px;
+  font-family: monospace;
+  display: inline-block;
+  margin-left: 15px;
+  color: #ffffff;
+}
+
 mat-form-field.full-width {
   width: 100%;
   margin-bottom: 20px;
@@ -25,7 +35,7 @@ mat-form-field.full-width {
   }
 }
 
-mat-checkbox.terms-checkbox {
+.mat-checkbox.terms-checkbox {
   margin-top: 20px;
   display: block;
 }
@@ -33,4 +43,5 @@ mat-checkbox.terms-checkbox {
 button {
   margin-top: 20px;
   display: block;
+  margin-left: 15px;
 }

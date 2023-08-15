@@ -41,10 +41,11 @@
     </mat-error>
   </mat-form-field>
 
-  <mat-checkbox formControlName="agree" class="terms-checkbox">I agree to the terms and conditions</mat-checkbox>
-  <mat-error *ngIf="myForm.get('agree')?.hasError('requiredTrue') && myForm.get('agree')?.touched">
-    You must agree to continue.
-  </mat-error>
-
+  <div class="form-preview-dark">
+  <mat-checkbox formControlName="agree" class="terms-checkbox" color="primary">I agree to the terms and conditions</mat-checkbox>
+    <mat-error *ngIf="myForm.get('agree')?.hasError('requiredTrue') && myForm.get('agree')?.touched">
+      You must agree to continue.
+    </mat-error>
+</div>
   <button mat-raised-button [disabled]="myForm.invalid" color="primary" type="submit">Submit</button>
 </form>
