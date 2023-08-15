@@ -34,7 +34,7 @@
       Age is required.
     </mat-error>
     <mat-error *ngIf="age?.hasError('min') && age?.touched">
-      {{ getErrorValue('min') }} is young to use this app kid!
+      {{ getErrorValue('min') }} is too young to use this app kid!
     </mat-error>
     <mat-error *ngIf="age?.hasError('max') && age?.touched">
       {{ getErrorValue('max') }} is too old to use this app!
