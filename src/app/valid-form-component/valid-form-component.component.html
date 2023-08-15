@@ -46,5 +46,5 @@
     You must agree to continue.
   </mat-error>
 
-  <button mat-raised-button color="primary" type="submit">Submit</button>
+  <button mat-raised-button [disabled]="myForm.invalid" color="primary" type="submit">Submit</button>
 </form>
