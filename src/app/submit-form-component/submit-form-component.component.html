@@ -1,1 +1,90 @@
-<p>submit-form-component works!</p>
+<div class="container">
+  <form [formGroup]="options" class="form">
+    
+    <div class="control-section">
+      <label>Placeholder Appearance: </label>
+      <mat-radio-group [formControl]="floatLabelControl" class="radio-group">
+        <mat-radio-button value="auto" color="primary">Big</mat-radio-button>
+        <mat-radio-button value="always" color="primary">Small</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    
+    <div class="control-section">
+      <mat-checkbox [formControl]="hideRequiredControl" color="primary">
+        Hide required marker
+      </mat-checkbox>
+    </div>
+    
+    <div class="form-fields">
+      <div class="name-group">
+        <mat-form-field [floatLabel]="getFloatLabelValue()" [hideRequiredMarker]="hideRequiredControl.value">
+          <mat-label>First Name</mat-label>
+          <input matInput placeholder="First Name" formControlName="firstName" required />
+          <mat-error *ngIf="firstName?.invalid && firstName?.touched">
+            First name is required.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field [floatLabel]="getFloatLabelValue()" [hideRequiredMarker]="hideRequiredControl.value">
+          <mat-label>Last Name</mat-label>
+          <input matInput placeholder="Last Name" formControlName="lastName" required />
+          <mat-error *ngIf="lastName?.invalid && lastName?.touched">
+            Last name is required.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <mat-form-field [hideRequiredMarker]="hideRequiredControl.value" [floatLabel]="getFloatLabelValue()">
+        <mat-select formControlName="gender" required>
+          <mat-option value="">-- None --</mat-option>
+          <mat-option value="male">Male</mat-option>
+          <mat-option value="female">Female</mat-option>
+          <mat-option value="other">Other</mat-option>
+          <mat-option value="preferNotToSay">Prefer not to say</mat-option>
+        </mat-select>
+        <mat-label>Gender</mat-label>
+        <mat-error *ngIf="gender?.invalid && gender?.touched">
+          Gender is required.
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="extra-fields">
+      <mat-form-field [hideRequiredMarker]="hideRequiredControl.value">
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="address" required />
+        <mat-error *ngIf="address?.invalid && address?.touched">
+          Address is required.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field [hideRequiredMarker]="hideRequiredControl.value">
+        <mat-label>Country</mat-label>
+        <mat-select formControlName="country" required>
+          <mat-option value="AU">Australia</mat-option>
+          <mat-option value="BR">Brazil</mat-option>
+          <mat-option value="CA">Canada</mat-option>
+          <mat-option value="CN">China</mat-option>
+          <mat-option value="DE">Germany</mat-option>
+          <mat-option value="ES">Spain</mat-option>
+          <mat-option value="FR">France</mat-option>
+          <mat-option value="IN">India</mat-option>
+          <mat-option value="IT">Italy</mat-option>
+          <mat-option value="JP">Japan</mat-option>
+          <mat-option value="MX">Mexico</mat-option>
+          <mat-option value="RU">Russia</mat-option>
+          <mat-option value="ZA">South Africa</mat-option>
+          <mat-option value="UK">United Kingdom</mat-option>
+          <mat-option value="US">United States</mat-option>
+      </mat-select>
+        <mat-error *ngIf="country?.invalid && country?.touched">
+          Country is required.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Personal Notes</mat-label>
+        <textarea matInput></textarea>
+      </mat-form-field>
+    </div>
+    <button mat-raised-button [disabled]="options.invalid" color="primary" type="submit">Submit</button>
+  </form>
+</div>
