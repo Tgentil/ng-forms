@@ -1,40 +1,117 @@
 <div class="container">
   <form [formGroup]="options" class="form">
-    
+    <div class="form-preview">Value: {{ options.value | json }}</div>
+
+    <hr />
+
     <div class="control-section">
       <label>Placeholder Appearance: </label>
       <mat-radio-group [formControl]="floatLabelControl" class="radio-group">
         <mat-radio-button value="auto" color="primary">Big</mat-radio-button>
-        <mat-radio-button value="always" color="primary">Small</mat-radio-button>
+        <mat-radio-button value="always" color="primary"
+          >Small</mat-radio-button
+        >
       </mat-radio-group>
     </div>
-    
+
     <div class="control-section">
       <mat-checkbox [formControl]="hideRequiredControl" color="primary">
         Hide required marker
       </mat-checkbox>
     </div>
-    
+
     <div class="form-fields">
       <div class="name-group">
-        <mat-form-field [floatLabel]="getFloatLabelValue()" [hideRequiredMarker]="hideRequiredControl.value">
+        <mat-form-field
+          [floatLabel]="getFloatLabelValue()"
+          [hideRequiredMarker]="hideRequiredControl.value"
+        >
           <mat-label>First Name</mat-label>
-          <input matInput placeholder="First Name" formControlName="firstName" required />
+          <input
+            matInput
+            placeholder="First Name"
+            formControlName="firstName"
+            required
+          />
           <mat-error *ngIf="firstName?.invalid && firstName?.touched">
             First name is required.
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field [floatLabel]="getFloatLabelValue()" [hideRequiredMarker]="hideRequiredControl.value">
+        <mat-form-field
+          [floatLabel]="getFloatLabelValue()"
+          [hideRequiredMarker]="hideRequiredControl.value"
+        >
           <mat-label>Last Name</mat-label>
-          <input matInput placeholder="Last Name" formControlName="lastName" required />
+          <input
+          matInput
+          placeholder="Last Name"
+          formControlName="lastName"
+          required
+          />
           <mat-error *ngIf="lastName?.invalid && lastName?.touched">
             Last name is required.
           </mat-error>
         </mat-form-field>
       </div>
+        
 
-      <mat-form-field [hideRequiredMarker]="hideRequiredControl.value" [floatLabel]="getFloatLabelValue()">
+      <mat-form-field
+      [floatLabel]="getFloatLabelValue()"
+      [hideRequiredMarker]="hideRequiredControl.value"
+      class="age-field"
+    >
+      <mat-label>Age</mat-label>
+        <input matInput type="number" placeholder="Age" formControlName="age" />
+        <mat-error *ngIf="age?.hasError('required') && age?.touched">
+          Age is required.
+        </mat-error>
+        <mat-error *ngIf="age?.hasError('min') && age?.touched">
+          {{ getErrorValue("min") }} is too young to use this app kid!
+        </mat-error>
+        <mat-error *ngIf="age?.hasError('max') && age?.touched">
+          {{ getErrorValue("max") }} is too old to use this app!
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field
+        [floatLabel]="getFloatLabelValue()"
+        [hideRequiredMarker]="hideRequiredControl.value"
+      >
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Email" formControlName="email" />
+        <mat-error *ngIf="email?.hasError('required') && email?.touched">
+          Email is required.
+        </mat-error>
+        <mat-error *ngIf="email?.hasError('email') && email?.touched">
+          Please enter a valid email.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field
+        [floatLabel]="getFloatLabelValue()"
+        [hideRequiredMarker]="hideRequiredControl.value"
+      >
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          type="password"
+          placeholder="Password"
+          formControlName="password"
+        />
+        <mat-hint>Password should contain both letters and numbers.</mat-hint>
+        <mat-error *ngIf="password?.hasError('required') && password?.touched">
+          Password is required.
+        </mat-error>
+        <mat-error *ngIf="password?.hasError('pattern') && password?.touched">
+          Password must contain both letters and numbers.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field
+        [hideRequiredMarker]="hideRequiredControl.value"
+        [floatLabel]="getFloatLabelValue()"
+      >
         <mat-select formControlName="gender" required>
           <mat-option value="">-- None --</mat-option>
           <mat-option value="male">Male</mat-option>
@@ -75,7 +152,7 @@
           <mat-option value="ZA">South Africa</mat-option>
           <mat-option value="UK">United Kingdom</mat-option>
           <mat-option value="US">United States</mat-option>
-      </mat-select>
+        </mat-select>
         <mat-error *ngIf="country?.invalid && country?.touched">
           Country is required.
         </mat-error>
@@ -84,7 +161,20 @@
         <mat-label>Personal Notes</mat-label>
         <textarea matInput></textarea>
       </mat-form-field>
+      <div class="form-preview-dark">
+        <mat-checkbox formControlName="agree" class="terms-checkbox" color="primary">I agree to the terms and conditions</mat-checkbox>
+          <mat-error *ngIf="options.get('agree')?.hasError('requiredTrue') && options.get('agree')?.touched">
+            You must agree to continue.
+          </mat-error>
+      </div>
     </div>
-    <button mat-raised-button [disabled]="options.invalid" color="primary" type="submit">Submit</button>
+    <button
+      mat-raised-button
+      [disabled]="options.invalid"
+      color="primary"
+      type="submit"
+    >
+      Submit
+    </button>
   </form>
 </div>
