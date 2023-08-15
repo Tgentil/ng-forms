@@ -13,38 +13,26 @@ export class ValidFormComponentComponent implements OnInit {
 
   ngOnInit() {
     this.myForm = this.fb.group({
-      email: ['',
-      [
-      Validators.required,
-      Validators.email
-      ]
-        ],
+      email: ['', [
+        Validators.required,
+        Validators.email
+      ]],
 
-      password: [
-        '',
-        [
-          Validators.required,
-          Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
-        ],
-      ],
+      password: ['', [
+        Validators.required,
+        Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
+      ]],
 
-      age: [
-        null,
-        [
-          Validators.required,
-          Validators.minLength(2),
-          Validators.min(18),
-          Validators.max(65),
-        ],
-      ],
+      age: [null, [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.min(18),
+        Validators.max(65),
+      ]],
 
-      agree: [
-        false,
-        [
-          Validators.requiredTrue
-        ],
-      ],
-
+      agree: [false, [
+        Validators.requiredTrue
+      ]],
     });
   }
 
@@ -58,5 +46,11 @@ export class ValidFormComponentComponent implements OnInit {
 
   get age() {
     return this.myForm.get('age');
+  }
+
+  getErrorValue(errorType: string): number | null {
+    const errors = this.age?.errors;
+    if (!errors || !errors[errorType]) return null;
+    return errors[errorType]?.actual;
   }
 }
