@@ -1,17 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl,
+} from '@angular/forms';
 import { FloatLabelType } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-submit-form-component',
   templateUrl: './submit-form-component.component.html',
-  styleUrls: ['./submit-form-component.component.scss']
+  styleUrls: ['./submit-form-component.component.scss'],
 })
 export class SubmitFormComponentComponent implements OnInit {
-
   options!: FormGroup;
   hideRequiredControl = new FormControl(false, Validators.requiredTrue);
-  floatLabelControl = new FormControl('auto' as FloatLabelType, Validators.required);
+  floatLabelControl = new FormControl(
+    'auto' as FloatLabelType,
+    Validators.required
+  );
 
   constructor(private fb: FormBuilder) {}
 
@@ -23,26 +30,27 @@ export class SubmitFormComponentComponent implements OnInit {
       gender: ['', Validators.required],
       address: ['', Validators.required],
       country: ['', Validators.required],
-      email: ['', [
-        Validators.required,
-        Validators.email
-      ]],
+      email: ['', [Validators.required, Validators.email]],
 
-      password: ['', [
-        Validators.required,
-        Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
-      ]],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
+        ],
+      ],
 
-      age: [null, [
-        Validators.required,
-        Validators.minLength(2),
-        Validators.min(18),
-        Validators.max(65),
-      ]],
+      age: [
+        null,
+        [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.min(18),
+          Validators.max(65),
+        ],
+      ],
 
-      agree: [false, [
-        Validators.requiredTrue
-      ]],
+      agree: [false, [Validators.requiredTrue]],
     });
   }
 
@@ -87,5 +95,4 @@ export class SubmitFormComponentComponent implements OnInit {
     if (!errors || !errors[errorType]) return null;
     return errors[errorType]?.actual;
   }
-
 }

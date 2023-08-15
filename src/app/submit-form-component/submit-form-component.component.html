@@ -44,24 +44,23 @@
         >
           <mat-label>Last Name</mat-label>
           <input
-          matInput
-          placeholder="Last Name"
-          formControlName="lastName"
-          required
+            matInput
+            placeholder="Last Name"
+            formControlName="lastName"
+            required
           />
           <mat-error *ngIf="lastName?.invalid && lastName?.touched">
             Last name is required.
           </mat-error>
         </mat-form-field>
       </div>
-        
 
       <mat-form-field
-      [floatLabel]="getFloatLabelValue()"
-      [hideRequiredMarker]="hideRequiredControl.value"
-      class="age-field"
-    >
-      <mat-label>Age</mat-label>
+        [floatLabel]="getFloatLabelValue()"
+        [hideRequiredMarker]="hideRequiredControl.value"
+        class="age-field"
+      >
+        <mat-label>Age</mat-label>
         <input matInput type="number" placeholder="Age" formControlName="age" />
         <mat-error *ngIf="age?.hasError('required') && age?.touched">
           Age is required.
@@ -162,10 +161,20 @@
         <textarea matInput></textarea>
       </mat-form-field>
       <div class="form-preview-dark">
-        <mat-checkbox formControlName="agree" class="terms-checkbox" color="primary">I agree to the terms and conditions</mat-checkbox>
-          <mat-error *ngIf="options.get('agree')?.hasError('requiredTrue') && options.get('agree')?.touched">
-            You must agree to continue.
-          </mat-error>
+        <mat-checkbox
+          formControlName="agree"
+          class="terms-checkbox"
+          color="primary"
+          >I agree to the terms and conditions</mat-checkbox
+        >
+        <mat-error
+          *ngIf="
+            options.get('agree')?.hasError('requiredTrue') &&
+            options.get('agree')?.touched
+          "
+        >
+          You must agree to continue.
+        </mat-error>
       </div>
     </div>
     <button

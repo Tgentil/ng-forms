@@ -33,7 +33,8 @@
       }
     }
 
-    .form-fields, .extra-fields {
+    .form-fields,
+    .extra-fields {
       display: flex;
       gap: 20px;
       flex-wrap: wrap;
@@ -41,10 +42,10 @@
     }
 
     .name-group {
-      display: flex; 
+      display: flex;
       gap: 20px;
     }
-    
+
     .name-group mat-form-field {
       width: 50%;
       margin-bottom: 0;
