@@ -37,5 +37,6 @@ Essa abordagem ajuda a visualizar a reatividade do projeto em tempo real. À med
 ## Inspiração
 
 Este projeto foi fortemente inspirado pelo tutorial do Fireship, adaptado para atender às necessidades específicas e ao aprendizado desejado:  
+
 [![Vídeo Tutorial](https://img.shields.io/badge/Assista%20o%20tutorial-Youtube-FF0000?style=flat-square&logo=youtube)](https://www.youtube.com/watch?v=JeeUY6WaXiA&ab_channel=Fireship)
 <img src="https://avatars.githubusercontent.com/u/46283609?s=200&v=4" width="20">
