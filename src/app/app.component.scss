@@ -1,0 +1,14 @@
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  margin-bottom: 20px;
+}
+
+.nav-buttons button {
+  margin-right: 10px;
+}
+
+.nav-buttons button:last-child {
+  margin-right: 0;
+}
