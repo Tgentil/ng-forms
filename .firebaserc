@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ng-tg-form": {
+      "hosting": {
+        "ng-forms": [
+          "ng-tg-form"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ng-tg-form"
+  }
+}

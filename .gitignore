@@ -40,3 +40,14 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# firebase
+.firebase
+*-debug.log
+.runtimeconfig.json
+
+src/environments/*
+# Firebase
+.firebase
+*-debug.log
+.runtimeconfig.json
