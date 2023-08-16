@@ -1,6 +1,6 @@
 <div class="container">
-  <form [formGroup]="options" class="form">
-    <div class="form-preview">Value: {{ options.value | json }}</div>
+  <form [formGroup]="myForm" class="form">
+    <div class="form-preview">Value: {{ myForm.value | json }}</div>
 
     <hr />
 
@@ -169,8 +169,8 @@
         >
         <mat-error
           *ngIf="
-            options.get('agree')?.hasError('requiredTrue') &&
-            options.get('agree')?.touched
+            myForm.get('agree')?.hasError('requiredTrue') &&
+            myForm.get('agree')?.touched
           "
         >
           You must agree to continue.
@@ -178,12 +178,16 @@
       </div>
     </div>
     <button
-      mat-raised-button
-      [disabled]="options.invalid"
-      color="primary"
-      type="submit"
-    >
-      Submit
-    </button>
+    mat-raised-button
+    [disabled]="myForm.invalid"
+    color="primary"
+    type="submit"
+    (click)="onSubmit()"
+  >
+    Submit
+  </button>
+  <div *ngIf="isSubmit">
+    {{ submitMessage }}
+  </div>
   </form>
 </div>

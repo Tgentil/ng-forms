@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  Validators,
-  FormControl,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { FloatLabelType } from '@angular/material/form-field';
+import { FirestoreService } from '../firestore.service';
 
 @Component({
   selector: 'app-submit-form-component',
@@ -13,17 +9,19 @@ import { FloatLabelType } from '@angular/material/form-field';
   styleUrls: ['./submit-form-component.component.scss'],
 })
 export class SubmitFormComponentComponent implements OnInit {
-  options!: FormGroup;
+  myForm!: FormGroup;
+  isSubmit = true;
+  submitMessage = '';
   hideRequiredControl = new FormControl(false, Validators.requiredTrue);
   floatLabelControl = new FormControl(
     'auto' as FloatLabelType,
     Validators.required
   );
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private firestoreService: FirestoreService) {}
 
   ngOnInit() {
-    this.options = this.fb.group({
+    this.myForm = this.fb.group({
       floatLabel: this.floatLabelControl,
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -59,35 +57,35 @@ export class SubmitFormComponentComponent implements OnInit {
   }
 
   get firstName() {
-    return this.options.get('firstName');
+    return this.myForm.get('firstName');
   }
 
   get lastName() {
-    return this.options.get('lastName');
+    return this.myForm.get('lastName');
   }
 
   get gender() {
-    return this.options.get('gender');
+    return this.myForm.get('gender');
   }
 
   get address() {
-    return this.options.get('address');
+    return this.myForm.get('address');
   }
 
   get country() {
-    return this.options.get('country');
+    return this.myForm.get('country');
   }
 
   get email() {
-    return this.options.get('email');
+    return this.myForm.get('email');
   }
 
   get password() {
-    return this.options.get('password');
+    return this.myForm.get('password');
   }
 
   get age() {
-    return this.options.get('age');
+    return this.myForm.get('age');
   }
 
   getErrorValue(errorType: string): number | null {
@@ -95,4 +93,17 @@ export class SubmitFormComponentComponent implements OnInit {
     if (!errors || !errors[errorType]) return null;
     return errors[errorType]?.actual;
   }
+
+  onSubmit() {
+    if (this.myForm.valid) {
+      this.firestoreService.addUser(this.myForm.value).then(() => {
+        this.isSubmit = true;
+        this.submitMessage = 'Dados enviados com sucesso!';
+      }).catch((error: any) => {
+        this.submitMessage = 'Erro ao enviar dados: ' + error.message;
+      });
+    }
+  }
+
+
 }
